@@ -28,4 +28,3 @@ class ConvertImageToVector
   end
 end
 
-print ConvertImageToVector.new('images/face.jpg').convert_to_vector
