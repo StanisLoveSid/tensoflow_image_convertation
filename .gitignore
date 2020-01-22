@@ -1,1 +1,4 @@
 .env
+data_samples/*
+captured_faces/*
+images/*

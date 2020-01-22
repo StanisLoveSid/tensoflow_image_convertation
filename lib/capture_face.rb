@@ -44,11 +44,15 @@ class CaptureFace
     MiniMagick::Image.open(@image_path)
   end
 
+  def file_name
+    File.basename(@image_path)
+  end
+
   def crop_image
     set_coordinates
     cropped_image = open_image.crop("#{@coordinates[:w]}x#{@coordinates[:h]}+#{@coordinates[:ulx]}+#{@coordinates[:uly]}")
-    cropped_image.write("#{CAPTURED_FACES_PATH}/#{open_image.path.split('/').last}")
-    cropped_image.write("#{DATA_SAMPLES_PATH}/#{open_image.path.split('/').last}")
+    cropped_image.write("#{CAPTURED_FACES_PATH}/#{file_name}")
+    cropped_image.write("#{DATA_SAMPLES_PATH}/#{file_name}")
   end
 end
 
