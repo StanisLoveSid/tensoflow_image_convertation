@@ -9,10 +9,7 @@ class ConvertImageToVector
   end
 
   def convert_to_vector
-    image_matrix = Tf::Image.decode_jpeg(read_jpeg).value
-    float32_matrix= [image_matrix].to_nm(nil, :float32)
-    vector_size = convert_to_numo_matrix(float32_matrix).shape.reduce(:*)
-    convert_to_numo_matrix(float32_matrix).reshape(DIMENSION, vector_size).to_a
+    Tf::Image.decode_jpeg(read_jpeg).to_ptr.get_array_of_float32(1, 128)
   end
 
   private
